@@ -3,89 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Orbit Media</title>
+    <title>About Us - Social Orbit Media</title>
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=syne@400,500,600,700,800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050508;
-            --surface: #13131e;
-            --text: #ffffff;
-            --accent: #ff3cac;
-            --grad: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
+            --bg-dark: #0b0713;
+            --card-bg: #150f24;
+            --accent-pink: #ff41b4;
+            --accent-blue: #3b82f6;
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --grad: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Syne', sans-serif;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        nav {
-            padding: 30px;
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(11, 7, 19, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-main);
+        }
+
+        .btn-audit {
+            background: var(--grad);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 65, 180, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-audit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 65, 180, 0.5);
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            padding: 180px 8% 60px;
             text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(255, 65, 180, 0.15), transparent 50%);
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
+        .about-hero h1 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .about-hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 100px;
+        }
+
+        /* Mission & Vision Grid */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .vision-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .vision-card:hover {
+            border-color: rgba(255, 65, 180, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .vision-card h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
             background: var(--grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero {
-            padding: 100px 20px;
-            text-align: center;
+        .vision-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        /* Why Choose Us Section */
+        .why-us {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .why-us h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: rgba(21, 15, 36, 0.5);
+            padding: 35px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.3s;
+        }
+
+        .feature-item:hover {
+            background: var(--card-bg);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            display: inline-block;
         }
 
-        .services {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap;
+        .feature-item h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
         }
 
-        .card {
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 15px;
-            width: 300px;
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #06040a;
+            padding: 40px 8%;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none;
+            }
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Social Orbit Media</div>
-    </nav>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="Social Orbit Media.png" alt="Social Orbit Media Logo" class="logo-img">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <a href="contact.html" class="btn-audit">Get Free Audit</a>
+    </header>
 
-    <div class="hero">
-        <h1>Grow Your Brand</h1>
-        <p>Expert digital marketing and web solutions.</p>
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <h1>Who We Are</h1>
+        <p>Social Orbit Media ek next-generation digital marketing agency hai jo brands ko social media par viral marketing, organic growth aur data-driven strategies ke zariye kamyab banati hai.</p>
+    </section>
+
+    <!-- Main About Container -->
+    <div class="about-container">
+
+        <!-- Mission & Vision -->
+        <div class="vision-grid">
+            <div class="vision-card">
+                <h2>Our Mission</h2>
+                <p>Hamara mission har chote aur bade business ko internet par ek majboot brand banana hai. Hum aisi high-performance marketing strategies tayar karte hain jo sirf likes nahi, balki asal sales aur customers generate karti hain.</p>
+            </div>
+            <div class="vision-card">
+                <h2>Our Vision</h2>
+                <p>Hum marketing ki dunya mein aisi tabdeeli lana chahte hain jahan har brand automation aur modern AI tools ka sahi istemal kar ke poori dunya mein apne marketing orbit ko phaila sake.</p>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="why-us">
+            <h2>Why Partners Choose Us?</h2>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Targeted Strategies</h3>
+                    <p>Hum har business ke liye us ki audience ke mutabiq customize aur unique plans design karte hain.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <h3>Data Driven</h3>
+                    <p>Fuzool kharche ke baghair, sahi marketing metrics aur analytics ko dekh kar campaigns run karte hain.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Fast Growth</h3>
+                    <p>Short-form content aur viral marketing hooks ke zariye brand ko tezi se reach dilwate hain.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="services">
-        <div class="card">
-            <h3>Digital Marketing</h3>
-            <p>Boost your online presence.</p>
-        </div>
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>Modern and fast websites.</p>
-        </div>
-        <div class="card">
-            <h3>Content Strategy</h3>
-            <p>Engage your audience.</p>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Social Orbit Media. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
