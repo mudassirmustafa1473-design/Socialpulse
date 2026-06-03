@@ -3,346 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Social Orbit Media</title>
-    <!-- Fonts -->
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=syne@400,500,600,700,800&display=swap" rel="stylesheet">
+    <title>Socialpulse Blog | Best Programming Laptops 2026</title>
     <style>
-        :root {
-            --bg-dark: #0b0713;
-            --card-bg: #150f24;
-            --accent-pink: #ff41b4;
-            --accent-blue: #3b82f6;
-            --text-main: #ffffff;
-            --text-muted: #a0aec0;
-            --grad: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Syne', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Navigation Bar */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: rgba(11, 7, 19, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--text-main);
-        }
-
-        .btn-audit {
-            background: var(--grad);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(255, 65, 180, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-audit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 65, 180, 0.5);
-        }
-
-        /* Blog Hero Section */
-        .blog-hero {
-            padding: 180px 8% 60px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 20%, rgba(255, 65, 180, 0.15), transparent 50%);
-        }
-
-        .blog-hero h1 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-        }
-
-        .blog-hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Blog Layout Container */
-        .blog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 4% 100px;
-        }
-
-        /* Featured Post */
-        .featured-post {
-            background: var(--card-bg);
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 50px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            transition: 0.3s;
-        }
-
-        .featured-post:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 65, 180, 0.2);
-        }
-
-        .featured-img {
-            background: linear-gradient(45deg, #1d1533, #2a1f47);
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .featured-content {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .post-tag {
-            background: rgba(255, 65, 180, 0.1);
-            color: var(--accent-pink);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            width: fit-content;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .featured-content h2 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .featured-content p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .post-meta {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.2);
-        }
-
-        .card-img {
-            height: 220px;
-            background: linear-gradient(135deg, #181129, #23193d);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-
-        .card-content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-content h3 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .card-content p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-
-        /* Footer */
-        footer {
-            background: #06040a;
-            padding: 40px 8%;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .featured-post {
-                grid-template-columns: 1fr;
-            }
-            .featured-img {
-                min-height: 250px;
-            }
-            nav ul {
-                display: none;
-            }
-            .blog-hero h1 {
-                font-size: 2.5rem;
-            }
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #050508; color: #f0eeff; padding: 20px; line-height: 1.8; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        h1 { color: #ff3cac; border-bottom: 2px solid #784ba0; padding-bottom: 10px; font-size: 2.5rem; }
+        h2 { color: #00f5d4; margin-top: 30px; font-size: 1.8rem; }
+        p { color: #d1cffd; font-size: 1.1rem; }
+        .back-btn { display: inline-block; background: #784ba0; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-bottom: 30px; font-weight: bold; transition: 0.3s; }
+        .back-btn:hover { background: #ff3cac; }
+        .post-meta { color: #8a87a0; font-size: 0.9rem; margin-bottom: 20px; }
+        .highlight-box { background: #0d0d14; border-left: 4px solid #00f5d4; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: #d1cffd; }
     </style>
 </head>
 <body>
-
-    <!-- Header / Navbar -->
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="Social Orbit Media.png" alt="Social Orbit Media Logo" class="logo-img">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Services</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <a href="contact.html" class="btn-audit">Get Free Audit</a>
-    </header>
-
-    <!-- Blog Hero Section -->
-    <section class="blog-hero">
-        <h1>Social Orbit Insights</h1>
-        <p>Aap ke brand ki growth ko rocket speed dene ke liye latest digital marketing trends, tips aurcase studies.</p>
-    </section>
-
-    <!-- Main Blog Container -->
-    <div class="blog-container">
-
-        <!-- Featured Post (Bada Article) -->
-        <article class="featured-post">
-            <div class="featured-img">🚀</div>
-            <div class="featured-content">
-                <div class="post-tag">Featured Post</div>
-                <h2>Social Media Marketing In 2026: Brand Kaise Grow Karein?</h2>
-                <p>Digital marketing har lamha badal rahi hai. Is article mein hum un 5 baray trends par baat karenge jo is saal aap ke business ko organic reach dilwa sakte hain.</p>
-                <div class="post-meta">June 3, 2026 • 5 min read</div>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <h1>Socialpulse Official Blog</h1>
+        <div class="post-meta">Published on: June 2026 | Category: Tech & Hardware</div>
+        
+        <div class="main-content">
+            <h2>Top 5 Best Laptops for Programming and Multitasking in 2026</h2>
+            <p>Choosing the right laptop for software development, heavy multitasking, and occasional gaming can be a tough decision. As a developer, you don't just need a shiny screen; you need raw performance, great thermal management, and robust build quality.</p>
+            
+            <div class="highlight-box">
+                <strong>Quick Tip:</strong> For programming in 2026, never settle for less than 16GB of RAM and a fast NVMe SSD. It keeps your compilation fast and multitasking smooth!
             </div>
-        </article>
 
-        <!-- Blog Grid (Baaki Articles) -->
-        <div class="blog-grid">
+            <h2>1. Lenovo ThinkPad Series (The Developer's Choice)</h2>
+            <p>ThinkPads are legendary in the programming community. Known for their world-class tactile keyboards and bulletproof durability, models like the ThinkPad T14 or X1 Carbon are perfect for coding for long hours without fatigue. Their Linux compatibility is also unmatched.</p>
 
-            <!-- Card 1 -->
-            <article class="blog-card">
-                <div class="card-img">📈</div>
-                <div class="card-content">
-                    <div class="post-tag">Strategy</div>
-                    <h3>Organic Reach Khatam? Yeh Tarika Try Karein</h3>
-                    <p>Agar aap ke Instagram aur Facebook par views nahi aa rahe, to algorithm ko beat karne ki yeh khufia strategy aap ke kaam aayegi.</p>
-                    <div class="post-meta">June 1, 2026 • 4 min read</div>
-                </div>
-            </article>
+            <h2>2. HP ZBook (The Powerhouse Workstation)</h2>
+            <p>If your programming workflow involves heavy data science, machine learning, or rendering, the HP ZBook is a beast. It comes with powerful dedicated graphics and exceptional cooling systems, meaning your laptop won't heat up even when running heavy Android emulators or playing Minecraft on the side.</p>
 
-            <!-- Card 2 -->
-            <article class="blog-card">
-                <div class="card-img">🎥</div>
-                <div class="card-content">
-                    <div class="post-tag">Shorts</div>
-                    <h3>Short-Form Video Content Ki Power</h3>
-                    <p>Reels aur TikToks ke zariye sirf 30 dinon mein 10k followers kaise haasil karein? Poori planning aur script-writing ka formula yahan dekhein.</p>
-                    <div class="post-meta">May 28, 2026 • 3 min read</div>
-                </div>
-            </article>
+            <h2>3. Dell XPS 15 (The Perfect All-Rounder)</h2>
+            <p>Dell XPS offers a beautiful balance between a stunning display and high-end performance. With Intel Core i7/i9 or Ryzen processors, it handles multiple Chrome tabs, code editors, and local servers simultaneously without breaking a sweat.</p>
 
-            <!-- Card 3 -->
-            <article class="blog-card">
-                <div class="card-img">🎯</div>
-                <div class="card-content">
-                    <div class="post-tag">Paid Ads</div>
-                    <h3>Meta Ads Ka Budget Sahi Jagah Kaise Lagaayein?</h3>
-                    <p>Kam paise kharch kar ke zyada sales aur leads kaise generate ki jaati hain? Seekhein hamari expert paid advertising framework se.</p>
-                    <div class="post-meta">May 25, 2026 • 6 min read</div>
-                </div>
-            </article>
+            <h2>Important Specs to Check Before Buying:</h2>
+            <ul>
+                <li><strong>Processor (CPU):</strong> Minimum Intel Core i5 (12th Gen+) or AMD Ryzen 5.</li>
+                <li><strong>Storage:</strong> 512GB or 1TB NVMe SSD (Avoid HDDs completely).</li>
+                <li><strong>Battery Life:</strong> Look for at least 7-8 hours of backup for coding on the go.</li>
+            </ul>
 
+            <p>Stay tuned for more detailed reviews on digital marketing strategies and professional tech setups to scale your business online!</p>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialpulse Blog | Best Tech & Marketing Insights</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #050508; color: #f0eeff; padding: 20px; line-height: 1.8; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        h1 { color: #ff3cac; border-bottom: 2px solid #784ba0; padding-bottom: 10px; font-size: 2.5rem; }
+        h2 { color: #00f5d4; margin-top: 30px; font-size: 1.8rem; }
+        h3 { color: #ff3cac; font-size: 1.3rem; margin-top: 20px; }
+        p { color: #d1cffd; font-size: 1.1rem; }
+        .back-btn { display: inline-block; background: #784ba0; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-bottom: 30px; font-weight: bold; transition: 0.3s; }
+        .back-btn:hover { background: #ff3cac; }
+        .post-meta { color: #8a87a0; font-size: 0.9rem; margin-bottom: 20px; }
+        .blog-card { background: #0d0d14; border: 1px solid #784ba0; padding: 25px; margin-bottom: 30px; border-radius: 8px; border-left: 5px solid #ff3cac; }
+        .blog-card.blue-card { border-left: 5px solid #00f5d4; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: #d1cffd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <h1>Social Orbit Media Blog</h1>
+        <p>Stay updated with the latest trends in technology, hardware evaluations, and digital growth strategies.</p>
+        
+        <br>
+
+        <!-- Blog Post 1: Laptops -->
+        <div class="blog-card">
+            <h2>Best Programming Laptops to Buy in 2026</h2>
+            <p class="post-meta">Published on: May 28, 2026 | By: Tech Expert</p>
+            <p>Choosing the right laptop for software development and heavy multitasking can be tricky. Developers need a machine that balances raw performance, battery efficiency, and reliability without overheating during intense coding sessions.</p>
+            <h3>Top Recommendations</h3>
+            <ul>
+                <li><strong>Lenovo ThinkPad Series:</strong> Renowned for its legendary keyboard comfort and robust build, making it a favorite for long programming hours.</li>
+                <li><strong>HP ZBook Series:</strong> A powerhouse workstation designed for heavy compilation, multitasking, and rendering performance.</li>
+            </ul>
+        </div>
+
+        <!-- Blog Post 2: Digital Marketing -->
+        <div class="blog-card blue-card">
+            <h2>What is Digital Marketing and How It Can Grow Your Business?</h2>
+            <p class="post-meta">Published on: June 2, 2026 | By: Social Orbit Media Team</p>
+            
+            <p>In today's fast-paced world, traditional marketing alone isn't enough to sustain a business. If your business isn't online, it virtually doesn't exist for billions of potential customers. <strong>Digital marketing</strong> is the strategic practice of promoting brands, products, or services using the internet and digital communication channels.</p>
+            
+            <h3>Key Pillars of Digital Marketing</h3>
+            <ul>
+                <li><strong>Search Engine Optimization (SEO):</strong> Optimizing your website structure and content so it ranks organically on Google when users search for your services.</li>
+                <li><strong>Social Media Marketing (SMM):</strong> Utilizing platforms like Instagram, Facebook, and LinkedIn to build a loyal community and talk directly to your audience.</li>
+                <li><strong>Content Marketing:</strong> Creating informative blogs, videos, and graphics that provide value, building deep trust before pushing for a sale.</li>
+            </ul>
+
+            <h3>How It Scales Your Business</h3>
+            <p>Unlike old marketing methods, digital marketing gives you <strong>measurable results</strong>. You know exactly how many people clicked your link, where they came from, and what they bought. It levels the playing field, allowing startups and digital agencies to compete directly with global enterprises by laser-targeting the right audience at a fraction of the cost.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+            
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Social Orbit Media. All rights reserved.</p>
-    </footer>
-
 </body>
 </html>
