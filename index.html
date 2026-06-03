@@ -846,6 +846,51 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
+  /* ========================================================
+   MOBILE RESPONSIVE STYLES (DO NOT TOUCH ABOVE THIS LINE)
+   ======================================================== */
+@media screen and (max-width: 768px) {
+    /* Full screen width on mobile */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Adjusting your Navigation for Mobile */
+    nav {
+        padding: 15px 20px !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        text-align: center !important;
+    }
+
+    /* Making your Hero text size perfect for mobile screens */
+    .hero {
+        padding: 100px 20px 40px !important;
+        min-height: auto !important;
+    }
+
+    h1 {
+        font-size: 2.2rem !important; /* Mobile par heading buhat bari nahi dikhegi */
+        line-height: 1.2 !important;
+    }
+
+    /* Making your elements/grid layouts stack vertically on phone */
+    .services-grid, .services, .container, .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        padding: 10px 20px !important;
+        gap: 20px !important;
+    }
+
+    /* Cards alignment for mobile */
+    .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 15px 0 !important;
+    }
+}
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
