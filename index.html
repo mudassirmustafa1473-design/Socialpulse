@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Social Orbit Media</title>
+    <title>Blog - Social Orbit Media</title>
     <!-- Fonts -->
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=syne@400,500,600,700,800&display=swap" rel="stylesheet">
     <style>
@@ -86,14 +86,14 @@
             box-shadow: 0 6px 20px rgba(255, 65, 180, 0.5);
         }
 
-        /* About Hero Section */
-        .about-hero {
+        /* Blog Hero Section */
+        .blog-hero {
             padding: 180px 8% 60px;
             text-align: center;
             background: radial-gradient(circle at 50% 20%, rgba(255, 65, 180, 0.15), transparent 50%);
         }
 
-        .about-hero h1 {
+        .blog-hero h1 {
             font-family: 'Clash Display', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
@@ -103,101 +103,134 @@
             margin-bottom: 15px;
         }
 
-        .about-hero p {
+        .blog-hero p {
             color: var(--text-muted);
             font-size: 1.2rem;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Main Content Container */
-        .about-container {
+        /* Blog Layout Container */
+        .blog-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 4% 100px;
+            padding: 0 4% 100px;
         }
 
-        /* Mission & Vision Grid */
-        .vision-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 70px;
-        }
-
-        .vision-card {
+        /* Featured Post */
+        .featured-post {
             background: var(--card-bg);
-            padding: 40px;
             border-radius: 24px;
+            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
             transition: 0.3s;
         }
 
-        .vision-card:hover {
-            border-color: rgba(255, 65, 180, 0.2);
+        .featured-post:hover {
             transform: translateY(-5px);
+            border-color: rgba(255, 65, 180, 0.2);
         }
 
-        .vision-card h2 {
+        .featured-img {
+            background: linear-gradient(45deg, #1d1533, #2a1f47);
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .post-tag {
+            background: rgba(255, 65, 180, 0.1);
+            color: var(--accent-pink);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .featured-content h2 {
             font-family: 'Clash Display', sans-serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.3;
         }
 
-        .vision-card p {
+        .featured-content p {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            margin-bottom: 25px;
         }
 
-        /* Why Choose Us Section */
-        .why-us {
-            text-align: center;
-            margin-top: 40px;
+        .post-meta {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
         }
 
-        .why-us h2 {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-        }
-
-        .features-grid {
+        /* Blog Grid */
+        .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
 
-        .feature-item {
-            background: rgba(21, 15, 36, 0.5);
-            padding: 35px 25px;
+        .blog-card {
+            background: var(--card-bg);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .feature-item:hover {
-            background: var(--card-bg);
+        .blog-card:hover {
+            transform: translateY(-5px);
             border-color: rgba(59, 130, 246, 0.2);
         }
 
-        .feature-icon {
+        .card-img {
+            height: 220px;
+            background: linear-gradient(135deg, #181129, #23193d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
         }
 
-        .feature-item h3 {
+        .card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
             font-family: 'Clash Display', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 12px;
+            line-height: 1.4;
         }
 
-        .feature-item p {
+        .card-content p {
             color: var(--text-muted);
+            margin-bottom: 20px;
             font-size: 0.95rem;
+            flex-grow: 1;
         }
 
         /* Footer */
@@ -210,15 +243,18 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
-        @media (max-width: 850px) {
-            .vision-grid {
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .featured-post {
                 grid-template-columns: 1fr;
+            }
+            .featured-img {
+                min-height: 250px;
             }
             nav ul {
                 display: none;
             }
-            .about-hero h1 {
+            .blog-hero h1 {
                 font-size: 2.5rem;
             }
         }
@@ -236,63 +272,71 @@
         <nav>
             <ul>
                 <li><a href="index.html">Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
         <a href="contact.html" class="btn-audit">Get Free Audit</a>
     </header>
 
-    <!-- About Hero Section -->
-    <section class="about-hero">
-        <h1>Who We Are</h1>
-        <p>Social Orbit Media ek next-generation digital marketing agency hai jo brands ko social media par viral marketing, organic growth aur data-driven strategies ke zariye kamyab banati hai.</p>
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <h1>Social Orbit Insights</h1>
+        <p>Aap ke brand ki growth ko rocket speed dene ke liye latest digital marketing trends, tips aurcase studies.</p>
     </section>
 
-    <!-- Main About Container -->
-    <div class="about-container">
+    <!-- Main Blog Container -->
+    <div class="blog-container">
 
-        <!-- Mission & Vision -->
-        <div class="vision-grid">
-            <div class="vision-card">
-                <h2>Our Mission</h2>
-                <p>Hamara mission har chote aur bade business ko internet par ek majboot brand banana hai. Hum aisi high-performance marketing strategies tayar karte hain jo sirf likes nahi, balki asal sales aur customers generate karti hain.</p>
+        <!-- Featured Post (Bada Article) -->
+        <article class="featured-post">
+            <div class="featured-img">🚀</div>
+            <div class="featured-content">
+                <div class="post-tag">Featured Post</div>
+                <h2>Social Media Marketing In 2026: Brand Kaise Grow Karein?</h2>
+                <p>Digital marketing har lamha badal rahi hai. Is article mein hum un 5 baray trends par baat karenge jo is saal aap ke business ko organic reach dilwa sakte hain.</p>
+                <div class="post-meta">June 3, 2026 • 5 min read</div>
             </div>
-            <div class="vision-card">
-                <h2>Our Vision</h2>
-                <p>Hum marketing ki dunya mein aisi tabdeeli lana chahte hain jahan har brand automation aur modern AI tools ka sahi istemal kar ke poori dunya mein apne marketing orbit ko phaila sake.</p>
-            </div>
+        </article>
+
+        <!-- Blog Grid (Baaki Articles) -->
+        <div class="blog-grid">
+
+            <!-- Card 1 -->
+            <article class="blog-card">
+                <div class="card-img">📈</div>
+                <div class="card-content">
+                    <div class="post-tag">Strategy</div>
+                    <h3>Organic Reach Khatam? Yeh Tarika Try Karein</h3>
+                    <p>Agar aap ke Instagram aur Facebook par views nahi aa rahe, to algorithm ko beat karne ki yeh khufia strategy aap ke kaam aayegi.</p>
+                    <div class="post-meta">June 1, 2026 • 4 min read</div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card">
+                <div class="card-img">🎥</div>
+                <div class="card-content">
+                    <div class="post-tag">Shorts</div>
+                    <h3>Short-Form Video Content Ki Power</h3>
+                    <p>Reels aur TikToks ke zariye sirf 30 dinon mein 10k followers kaise haasil karein? Poori planning aur script-writing ka formula yahan dekhein.</p>
+                    <div class="post-meta">May 28, 2026 • 3 min read</div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card">
+                <div class="card-img">🎯</div>
+                <div class="card-content">
+                    <div class="post-tag">Paid Ads</div>
+                    <h3>Meta Ads Ka Budget Sahi Jagah Kaise Lagaayein?</h3>
+                    <p>Kam paise kharch kar ke zyada sales aur leads kaise generate ki jaati hain? Seekhein hamari expert paid advertising framework se.</p>
+                    <div class="post-meta">May 25, 2026 • 6 min read</div>
+                </div>
+            </article>
+
         </div>
-
-        <!-- Why Choose Us -->
-        <div class="why-us">
-            <h2>Why Partners Choose Us?</h2>
-            
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-item">
-                    <span class="feature-icon">🎯</span>
-                    <h3>Targeted Strategies</h3>
-                    <p>Hum har business ke liye us ki audience ke mutabiq customize aur unique plans design karte hain.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="feature-item">
-                    <span class="feature-icon">📊</span>
-                    <h3>Data Driven</h3>
-                    <p>Fuzool kharche ke baghair, sahi marketing metrics aur analytics ko dekh kar campaigns run karte hain.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Fast Growth</h3>
-                    <p>Short-form content aur viral marketing hooks ke zariye brand ko tezi se reach dilwate hain.</p>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!-- Footer -->
