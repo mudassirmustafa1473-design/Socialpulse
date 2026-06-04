@@ -728,7 +728,7 @@
     .tool-name { font-weight: 600; font-size: 0.88rem; }
     .tool-type { font-size: 0.75rem; color: var(--muted); }
 
-    /* FAQ */
+    /* FAQ WITH ACCORDION STYLES */
     .faq { background: var(--bg); }
 
     .faq-grid {
@@ -744,13 +744,52 @@
       border-radius: 16px;
       padding: 24px;
       cursor: none;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      overflow: hidden;
     }
 
     .faq-item:hover { border-color: rgba(255,60,172,0.2); }
-    .faq-q { font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-    .faq-icon { color: var(--accent1); flex-shrink: 0; }
-    .faq-a { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+    
+    .faq-q { 
+      font-weight: 600; 
+      font-size: 0.95rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 16px;
+      user-select: none;
+    }
+    
+    .faq-icon { 
+      color: var(--accent1); 
+      flex-shrink: 0; 
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    /* FAQ Jawab Shuru me Chupa Hoga */
+    .faq-a { 
+      font-size: 0.88rem; 
+      color: var(--muted); 
+      line-height: 1.65; 
+      font-weight: 300; 
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, margin-top 0.3s ease;
+    }
+
+    /* Jab Active hoga toh poora open ho jayega */
+    .faq-item.active .faq-a {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 14px;
+      transition: max-height 0.5s cubic-bezier(1, 0, 1, 0), opacity 0.3s ease, margin-top 0.3s ease;
+    }
+    
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg); /* Plus ka icon X ya minus lagne lagega */
+    }
 
     /* CTA */
     .cta-section {
@@ -1009,7 +1048,6 @@
     <div class="marquee-item">Brand Identity <span>✦</span></div>
     <div class="marquee-item">Video Production <span>✦</span></div>
     <div class="marquee-item">SEO Integration <span>✦</span></div>
-    <!-- duplicate for infinite loop -->
     <div class="marquee-item">Content Strategy <span>✦</span></div>
     <div class="marquee-item">Paid Advertising <span>✦</span></div>
     <div class="marquee-item">Influencer Marketing <span>✦</span></div>
@@ -1132,20 +1170,21 @@
 <section class="metrics reveal">
   <div class="metrics-inner">
     <div class="metric-item">
-      <div class="metric-val">500+</div>
+      <!-- Added data-target attributes for JavaScript to count up dynamically -->
+      <div class="metric-val" data-target="500">0</div>
       <div class="metric-label">Brands Served</div>
     </div>
     <div class="metric-item">
-      <div class="metric-val">$50M+</div>
-      <div class="metric-label">Ad Spend Managed</div>
+      <div class="metric-val" data-target="50">0</div>
+      <div class="metric-label">Ad Spend Managed ($M+)</div>
     </div>
     <div class="metric-item">
-      <div class="metric-val">98%</div>
-      <div class="metric-label">Client Retention</div>
+      <div class="metric-val" data-target="98">0</div>
+      <div class="metric-label">Client Retention (%)</div>
     </div>
     <div class="metric-item">
-      <div class="metric-val">380%</div>
-      <div class="metric-label">Average ROI</div>
+      <div class="metric-val" data-target="380">0</div>
+      <div class="metric-label">Average ROI (%)</div>
     </div>
   </div>
 </section>
@@ -1284,7 +1323,7 @@
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ (With Accordion structure) -->
 <section class="faq reveal" id="faq">
   <div class="section-label">FAQ</div>
   <div class="section-title">Frequently Asked<br>Questions</div>
@@ -1415,23 +1454,67 @@
 
   reveals.forEach(el => observer.observe(el));
 
-  // Counter Animation
+  // --- NEW: ADVANCED LIVE COUNTER ANIMATION ---
   function animateCounters() {
     const metricVals = document.querySelectorAll('.metric-val');
+    
     metricVals.forEach(el => {
-      const text = el.textContent;
-      el.style.opacity = '0';
-      setTimeout(() => { el.style.opacity = '1'; el.style.transition = 'opacity 0.5s'; }, 200);
+      const target = parseInt(el.getAttribute('data-target'));
+      const duration = 1500; // Animation total time 1.5 seconds
+      const stepTime = Math.max(Math.floor(duration / target), 15);
+      let current = 0;
+      
+      // Sufix handles settings like + or $
+      let suffix = "+";
+      if(target === 98) suffix = "%"; // Retention rate %
+      
+      let prefix = "";
+      if(target === 50) prefix = "$"; // Budget $M+
+
+      const timer = setInterval(() => {
+        // Increment smoothly
+        if(target > 100) {
+          current += Math.ceil(target / 30);
+        } else {
+          current += 1;
+        }
+        
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        
+        el.textContent = prefix + current + (target === 50 ? "M+" : suffix);
+      }, stepTime);
     });
   }
 
   const metricsSection = document.querySelector('.metrics-inner');
   if(metricsSection) {
     const metricsObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { animateCounters(); metricsObs.disconnect(); }
-    }, { threshold: 0.5 });
+      if (entries[0].isIntersecting) { 
+        animateCounters(); 
+        metricsObs.disconnect(); // Ek hi dafa run hoga jab screen pe aaye
+      }
+    }, { threshold: 0.3 });
     metricsObs.observe(metricsSection);
   }
+
+  // --- NEW: SMOOTH FAQ ACCORDION TOGGLE ---
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-q');
+    question.addEventListener('click', () => {
+      // Baqi saare open items ko pehle close karne ke liye:
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      // Is current wale item ko open/close toggle karein
+      item.classList.toggle('active');
+    });
+  });
 </script>
 </body>
 </html>
