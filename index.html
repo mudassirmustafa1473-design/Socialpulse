@@ -123,37 +123,40 @@
     }
     .nav-cta:hover { opacity: 0.85; transform: scale(1.03); }
 
-    /* Hamburger Menu Button */
+    /* Hamburger Menu Button Styling */
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 6px;
-      background: none;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      background: transparent;
       border: none;
       cursor: pointer;
       z-index: 110;
-      padding: 5px;
+      padding: 0;
     }
 
     .hamburger span {
       display: block;
-      width: 28px;
-      height: 2px;
+      width: 100%;
+      height: 2.5px;
       background-color: var(--text);
-      border-radius: 2px;
-      transition: all 0.3s ease;
+      border-radius: 4px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* Hamburger Animation to 'X' */
+    /* Hamburger Animation to Cross (X) */
     .hamburger.active span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
+      transform: translateY(8.5px) rotate(45deg);
       background-color: var(--accent1);
     }
     .hamburger.active span:nth-child(2) {
       opacity: 0;
+      transform: translateX(-20px);
     }
     .hamburger.active span:nth-child(3) {
-      transform: translateY(-8px) rotate(-445deg);
+      transform: translateY(-9px) rotate(-45deg);
       background-color: var(--accent1);
     }
 
@@ -918,7 +921,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ========================================================
-       MOBILE RESPONSIVE & HAMBURGER STYLES
+       MOBILE RESPONSIVE & FIXED HAMBURGER STYLES
        ======================================================== */
     @media screen and (max-width: 992px) {
       section { padding: 60px 20px; }
@@ -945,8 +948,10 @@
       body { cursor: default; }
       .cursor, .cursor-follower { display: none !important; }
       
-      /* Hamburger Display Toggle */
-      .hamburger { display: flex; }
+      /* Explicitly rendering hamburger visible on mobile */
+      .hamburger { 
+        display: flex !important; 
+      }
 
       /* Slide-out Mobile Menu */
       .nav-links {
@@ -956,7 +961,7 @@
         width: 75%;
         max-width: 300px;
         height: 100vh;
-        background: rgba(13, 13, 20, 0.95);
+        background: rgba(13, 13, 20, 0.98);
         backdrop-filter: blur(25px);
         border-left: 1px solid var(--border);
         flex-direction: column;
@@ -977,7 +982,7 @@
       }
 
       nav { padding: 15px 20px; }
-      .nav-cta { display: none; } /* Mobile par cta hidden ya links ke sath dal sakte hain */
+      .nav-cta { display: none; }
 
       .hero h1 { font-size: 2.8rem; }
       .hero-buttons { width: 100%; flex-direction: column; gap: 12px; }
@@ -1004,10 +1009,12 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="follower"></div>
 
+<!-- NAV -->
 <nav>
   <div class="logo">SocialPulse</div>
   
-  <button class="hamburger" id="hamburger">
+  <!-- Hamburger Button Fixed with ID -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span>
     <span></span>
     <span></span>
@@ -1026,6 +1033,7 @@
   <button class="nav-cta">Get Free Audit</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-orb orb1"></div>
   <div class="hero-bg-orb orb2"></div>
@@ -1094,6 +1102,7 @@
   </div>
 </section>
 
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
     <div class="marquee-item">Content Strategy <span>✦</span></div>
@@ -1115,6 +1124,7 @@
   </div>
 </div>
 
+<!-- SERVICES -->
 <section class="services reveal" id="services">
   <div class="services-header">
     <div>
@@ -1163,6 +1173,7 @@
   </div>
 </section>
 
+<!-- PLATFORMS -->
 <section class="platforms reveal" id="platforms">
   <div class="section-label">Platforms</div>
   <div class="section-title">We Dominate Every<br>Major Platform</div>
@@ -1220,6 +1231,7 @@
   </div>
 </section>
 
+<!-- METRICS -->
 <section class="metrics reveal">
   <div class="metrics-inner">
     <div class="metric-item">
@@ -1241,6 +1253,7 @@
   </div>
 </section>
 
+<!-- PROCESS -->
 <section class="process reveal" id="process">
   <div style="text-align:center; margin-bottom: 0;">
     <div class="section-label">How It Works</div>
@@ -1270,6 +1283,7 @@
   </div>
 </section>
 
+<!-- TOOLS -->
 <section class="tools reveal">
   <div class="section-label">Our Stack</div>
   <div class="section-title">Industry-Leading<br>Tools We Use</div>
@@ -1285,6 +1299,7 @@
   </div>
 </section>
 
+<!-- PRICING -->
 <section class="pricing reveal" id="pricing">
   <div style="text-align:center;">
     <div class="section-label">Pricing</div>
@@ -1340,6 +1355,7 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="testimonials reveal">
   <div class="section-label">Testimonials</div>
   <div class="section-title">Brands That Trust Us</div>
@@ -1371,6 +1387,7 @@
   </div>
 </section>
 
+<!-- FAQ -->
 <section class="faq reveal" id="faq">
   <div class="section-label">FAQ</div>
   <div class="section-title">Frequently Asked<br>Questions</div>
@@ -1402,6 +1419,7 @@
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-section reveal">
   <div class="cta-box">
     <div class="section-label" style="margin-bottom:20px;">Ready to Grow?</div>
@@ -1414,6 +1432,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1468,18 +1487,29 @@
   const navLinks = document.getElementById('nav-links');
   const navItems = document.querySelectorAll('.nav-links a');
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
-
-  // Mobile par kisi link pe click ho toh menu khud hi close ho jaye
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+  if(hamburger && navLinks) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
-  });
+
+    // Mobile par kisi link pe click ho toh menu close ho jaye
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Menu ke bahr click karne par close ho jaye
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    });
+  }
 
   // Custom Cursor
   const cursor = document.getElementById('cursor');
