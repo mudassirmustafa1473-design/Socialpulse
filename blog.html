@@ -1,121 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socialpulse Blog | Best Programming Laptops 2026</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #050508; color: #f0eeff; padding: 20px; line-height: 1.8; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        h1 { color: #ff3cac; border-bottom: 2px solid #784ba0; padding-bottom: 10px; font-size: 2.5rem; }
-        h2 { color: #00f5d4; margin-top: 30px; font-size: 1.8rem; }
-        p { color: #d1cffd; font-size: 1.1rem; }
-        .back-btn { display: inline-block; background: #784ba0; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-bottom: 30px; font-weight: bold; transition: 0.3s; }
-        .back-btn:hover { background: #ff3cac; }
-        .post-meta { color: #8a87a0; font-size: 0.9rem; margin-bottom: 20px; }
-        .highlight-box { background: #0d0d14; border-left: 4px solid #00f5d4; padding: 15px; margin: 20px 0; border-radius: 4px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; color: #d1cffd; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Blog | SocialPulse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --surface: #0d0d14;
+      --surface2: #13131e;
+      --accent1: #ff3cac;
+      --accent2: #784ba0;
+      --accent3: #2b86c5;
+      --text: #f0eeff;
+      --muted: #8a87a0;
+      --border: rgba(255,255,255,0.07);
+      --grad: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Noise Overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      background: rgba(5,5,8,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; background: transparent; border: none; cursor: pointer; z-index: 110; }
+    .hamburger span { display: block; width: 100%; height: 2.5px; background-color: var(--text); border-radius: 4px; }
+
+    /* BLOG HERO */
+    .blog-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 160px auto 60px;
+      padding: 0 20px;
+    }
+
+    .blog-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      letter-spacing: -1.5px;
+    }
+
+    .blog-header h1 span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .blog-header p {
+      color: var(--muted);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* BLOG GRID */
+    .blog-grid {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 60, 172, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .blog-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-meta {
+      font-size: 0.8rem;
+      color: var(--accent1);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .blog-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .blog-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s;
+    }
+
+    .blog-card:hover .read-more {
+      gap: 12px;
+      color: var(--accent1);
+    }
+
+    /* RESPONSIVE */
+    @media screen and (max-width: 992px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-header h1 { font-size: 2.8rem; }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav { padding: 15px 24px; }
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+        background: rgba(13, 13, 20, 0.98); backdrop-filter: blur(25px);
+        flex-direction: column; justify-content: center; align-items: center; gap: 30px;
+        transition: right 0.4s ease; z-index: 105;
+      }
+      .nav-links.active { right: 0; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
-        
-        <h1>Socialpulse Official Blog</h1>
-        <div class="post-meta">Published on: June 2026 | Category: Tech & Hardware</div>
-        
-        <div class="main-content">
-            <h2>Top 5 Best Laptops for Programming and Multitasking in 2026</h2>
-            <p>Choosing the right laptop for software development, heavy multitasking, and occasional gaming can be a tough decision. As a developer, you don't just need a shiny screen; you need raw performance, great thermal management, and robust build quality.</p>
-            
-            <div class="highlight-box">
-                <strong>Quick Tip:</strong> For programming in 2026, never settle for less than 16GB of RAM and a fast NVMe SSD. It keeps your compilation fast and multitasking smooth!
-            </div>
 
-            <h2>1. Lenovo ThinkPad Series (The Developer's Choice)</h2>
-            <p>ThinkPads are legendary in the programming community. Known for their world-class tactile keyboards and bulletproof durability, models like the ThinkPad T14 or X1 Carbon are perfect for coding for long hours without fatigue. Their Linux compatibility is also unmatched.</p>
+<!-- NAV -->
+<nav>
+  <div class="logo">SocialPulse</div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html" style="color: #ff3cac; font-weight: bold;">Blog</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</nav>
 
-            <h2>2. HP ZBook (The Powerhouse Workstation)</h2>
-            <p>If your programming workflow involves heavy data science, machine learning, or rendering, the HP ZBook is a beast. It comes with powerful dedicated graphics and exceptional cooling systems, meaning your laptop won't heat up even when running heavy Android emulators or playing Minecraft on the side.</p>
+<!-- BLOG HEADER -->
+<div class="blog-header">
+  <h1>Latest <span>Insights & Trends</span></h1>
+  <p>Mastering digital marketing, brand growth, and social media strategies.</p>
+</div>
 
-            <h2>3. Dell XPS 15 (The Perfect All-Rounder)</h2>
-            <p>Dell XPS offers a beautiful balance between a stunning display and high-end performance. With Intel Core i7/i9 or Ryzen processors, it handles multiple Chrome tabs, code editors, and local servers simultaneously without breaking a sweat.</p>
-
-            <h2>Important Specs to Check Before Buying:</h2>
-            <ul>
-                <li><strong>Processor (CPU):</strong> Minimum Intel Core i5 (12th Gen+) or AMD Ryzen 5.</li>
-                <li><strong>Storage:</strong> 512GB or 1TB NVMe SSD (Avoid HDDs completely).</li>
-                <li><strong>Battery Life:</strong> Look for at least 7-8 hours of backup for coding on the go.</li>
-            </ul>
-
-            <p>Stay tuned for more detailed reviews on digital marketing strategies and professional tech setups to scale your business online!</p>
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socialpulse Blog | Best Tech & Marketing Insights</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #050508; color: #f0eeff; padding: 20px; line-height: 1.8; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        h1 { color: #ff3cac; border-bottom: 2px solid #784ba0; padding-bottom: 10px; font-size: 2.5rem; }
-        h2 { color: #00f5d4; margin-top: 30px; font-size: 1.8rem; }
-        h3 { color: #ff3cac; font-size: 1.3rem; margin-top: 20px; }
-        p { color: #d1cffd; font-size: 1.1rem; }
-        .back-btn { display: inline-block; background: #784ba0; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-bottom: 30px; font-weight: bold; transition: 0.3s; }
-        .back-btn:hover { background: #ff3cac; }
-        .post-meta { color: #8a87a0; font-size: 0.9rem; margin-bottom: 20px; }
-        .blog-card { background: #0d0d14; border: 1px solid #784ba0; padding: 25px; margin-bottom: 30px; border-radius: 8px; border-left: 5px solid #ff3cac; }
-        .blog-card.blue-card { border-left: 5px solid #00f5d4; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; color: #d1cffd; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
-        
-        <h1>Social Orbit Media Blog</h1>
-        <p>Stay updated with the latest trends in technology, hardware evaluations, and digital growth strategies.</p>
-        
-        <br>
-
-        <!-- Blog Post 1: Laptops -->
-        <div class="blog-card">
-            <h2>Best Programming Laptops to Buy in 2026</h2>
-            <p class="post-meta">Published on: May 28, 2026 | By: Tech Expert</p>
-            <p>Choosing the right laptop for software development and heavy multitasking can be tricky. Developers need a machine that balances raw performance, battery efficiency, and reliability without overheating during intense coding sessions.</p>
-            <h3>Top Recommendations</h3>
-            <ul>
-                <li><strong>Lenovo ThinkPad Series:</strong> Renowned for its legendary keyboard comfort and robust build, making it a favorite for long programming hours.</li>
-                <li><strong>HP ZBook Series:</strong> A powerhouse workstation designed for heavy compilation, multitasking, and rendering performance.</li>
-            </ul>
-        </div>
-
-        <!-- Blog Post 2: Digital Marketing -->
-        <div class="blog-card blue-card">
-            <h2>What is Digital Marketing and How It Can Grow Your Business?</h2>
-            <p class="post-meta">Published on: June 2, 2026 | By: Social Orbit Media Team</p>
-            
-            <p>In today's fast-paced world, traditional marketing alone isn't enough to sustain a business. If your business isn't online, it virtually doesn't exist for billions of potential customers. <strong>Digital marketing</strong> is the strategic practice of promoting brands, products, or services using the internet and digital communication channels.</p>
-            
-            <h3>Key Pillars of Digital Marketing</h3>
-            <ul>
-                <li><strong>Search Engine Optimization (SEO):</strong> Optimizing your website structure and content so it ranks organically on Google when users search for your services.</li>
-                <li><strong>Social Media Marketing (SMM):</strong> Utilizing platforms like Instagram, Facebook, and LinkedIn to build a loyal community and talk directly to your audience.</li>
-                <li><strong>Content Marketing:</strong> Creating informative blogs, videos, and graphics that provide value, building deep trust before pushing for a sale.</li>
-            </ul>
-
-            <h3>How It Scales Your Business</h3>
-            <p>Unlike old marketing methods, digital marketing gives you <strong>measurable results</strong>. You know exactly how many people clicked your link, where they came from, and what they bought. It levels the playing field, allowing startups and digital agencies to compete directly with global enterprises by laser-targeting the right audience at a fraction of the cost.</p>
-        </div>
-
+<!-- BLOG GRID -->
+<div class="blog-grid">
+  
+  <!-- Post 1 -->
+  <div class="blog-card">
+    <div class="blog-img">📈</div>
+    <div class="blog-content">
+      <div class="blog-meta">Social Media</div>
+      <h3 class="blog-title">How to Double Your Instagram Engagement in 2026</h3>
+      <p class="blog-desc">Discover the latest algorithm shifts and content strategies that drive real reach and community growth.</p>
+      <a href="#" class="read-more">Read Article →</a>
     </div>
-</body>
-</html>
-            
-        </div>
+  </div>
+
+  <!-- Post 2 -->
+  <div class="blog-card">
+    <div class="blog-img">🚀</div>
+    <div class="blog-content">
+      <div class="blog-meta">Brand Strategy</div>
+      <h3 class="blog-title">The Blueprint for Organic TikTok Growth</h3>
+      <p class="blog-desc">Learn how short-form video hooks can position your business in front of millions of potential clients.</p>
+      <a href="#" class="read-more">Read Article →</a>
     </div>
+  </div>
+
+  <!-- Post 3 -->
+  <div class="blog-card">
+    <div class="blog-img">🎯</div>
+    <div class="blog-content">
+      <div class="blog-meta">Digital Marketing</div>
+      <h3 class="blog-title">Why Paid Ads Fail Without Good Organic Content</h3>
+      <p class="blog-desc">Before spending budget on ads, build a strong organic foundation. Here is exactly why it matters.</p>
+      <a href="#" class="read-more">Read Article →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Mobile Navbar Toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  if(hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+</script>
+
 </body>
 </html>
