@@ -96,17 +96,15 @@
       font-weight: 300;
     }
 
-    /* BLOG GRID */
-   /* Is CSS ko apni blog.html mein .blog-grid ki jagah replace karein */
+    /* BLOG GRID - DESKTOP FIXED */
     .blog-grid {
       max-width: 1200px;
       margin: 0 auto 100px;
       padding: 0 20px;
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 30px !important;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
       width: 100%;
-    }
     }
 
     .blog-card {
@@ -117,6 +115,7 @@
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
 
     .blog-card:hover {
@@ -185,7 +184,7 @@
       color: var(--accent1);
     }
 
-    /* RESPONSIVE */
+    /* MOBILE & TABLET RESPONSIVE */
     @media screen and (max-width: 992px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
       .blog-header h1 { font-size: 2.8rem; }
@@ -229,10 +228,8 @@
 
 <!-- BLOG GRID -->
 <div class="blog-grid">
-  <!-- BLOG GRID -->
-<div class="blog-grid">
   
-  <!-- Post 1: Laptop Specs (Purana Article) -->
+  <!-- Post 1: Laptop Specs -->
   <div class="blog-card">
     <div class="blog-img">💻</div>
     <div class="blog-content">
@@ -243,7 +240,7 @@
     </div>
   </div>
 
-  <!-- Post 2: Social Orbit Media (Purana Article) -->
+  <!-- Post 2: Social Orbit Media -->
   <div class="blog-card">
     <div class="blog-img">🌐</div>
     <div class="blog-content">
@@ -254,7 +251,7 @@
     </div>
   </div>
 
-  <!-- Post 3: Lahore Business (Naya Article) -->
+  <!-- Post 3: Lahore Business -->
   <div class="blog-card">
     <div class="blog-img">🚀</div>
     <div class="blog-content">
@@ -262,32 +259,6 @@
       <h3 class="blog-title">3 Secret Strategies to Scale Local Businesses in Lahore Using Digital Marketing</h3>
       <p class="blog-desc">Lahore ke local businesses ke liye social media aur targeted ads kaise game-changer sabit ho sakte hain?</p>
       <a href="lahore-business-growth.html" class="read-more">Read Article →</a>
-    </div>
-  </div>
-
-</div>
-  </div>
-  </div>
-
-  <!-- Post 2 -->
-  <div class="blog-card">
-    <div class="blog-img">🚀</div>
-    <div class="blog-content">
-      <div class="blog-meta">Brand Strategy</div>
-      <h3 class="blog-title">The Blueprint for Organic TikTok Growth</h3>
-      <p class="blog-desc">Learn how short-form video hooks can position your business in front of millions of potential clients.</p>
-      <a href="#" class="read-more">Read Article →</a>
-    </div>
-  </div>
-
-  <!-- Post 3 -->
-  <div class="blog-card">
-    <div class="blog-img">🎯</div>
-    <div class="blog-content">
-      <div class="blog-meta">Digital Marketing</div>
-      <h3 class="blog-title">Why Paid Ads Fail Without Good Organic Content</h3>
-      <p class="blog-desc">Before spending budget on ads, build a strong organic foundation. Here is exactly why it matters.</p>
-      <a href="#" class="read-more">Read Article →</a>
     </div>
   </div>
 
