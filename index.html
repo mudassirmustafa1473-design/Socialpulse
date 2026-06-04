@@ -123,6 +123,40 @@
     }
     .nav-cta:hover { opacity: 0.85; transform: scale(1.03); }
 
+    /* Hamburger Menu Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 110;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background-color: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation to 'X' */
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+      background-color: var(--accent1);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-445deg);
+      background-color: var(--accent1);
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -767,7 +801,6 @@
       transition: transform 0.3s ease;
     }
     
-    /* FAQ Jawab Shuru me Chupa Hoga */
     .faq-a { 
       font-size: 0.88rem; 
       color: var(--muted); 
@@ -779,7 +812,6 @@
       transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, margin-top 0.3s ease;
     }
 
-    /* Jab Active hoga toh poora open ho jayega */
     .faq-item.active .faq-a {
       max-height: 200px;
       opacity: 1;
@@ -788,7 +820,7 @@
     }
     
     .faq-item.active .faq-icon {
-      transform: rotate(45deg); /* Plus ka icon X ya minus lagne lagega */
+      transform: rotate(45deg);
     }
 
     /* CTA */
@@ -886,7 +918,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ========================================================
-       ADVANCED MOBILE RESPONSIVE STYLES (100% MOBILE FRIENDLY)
+       MOBILE RESPONSIVE & HAMBURGER STYLES
        ======================================================== */
     @media screen and (max-width: 992px) {
       section { padding: 60px 20px; }
@@ -913,19 +945,39 @@
       body { cursor: default; }
       .cursor, .cursor-follower { display: none !important; }
       
-      nav {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 15px;
-        position: relative;
-        background: var(--surface);
-      }
+      /* Hamburger Display Toggle */
+      .hamburger { display: flex; }
+
+      /* Slide-out Mobile Menu */
       .nav-links {
-        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(13, 13, 20, 0.95);
+        backdrop-filter: blur(25px);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
         justify-content: center;
-        gap: 15px 20px;
+        align-items: center;
+        gap: 30px;
+        z-index: 105;
+        transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+        padding: 40px;
       }
-      .nav-cta { width: 100%; text-align: center; }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
+
+      nav { padding: 15px 20px; }
+      .nav-cta { display: none; } /* Mobile par cta hidden ya links ke sath dal sakte hain */
 
       .hero h1 { font-size: 2.8rem; }
       .hero-buttons { width: 100%; flex-direction: column; gap: 12px; }
@@ -952,10 +1004,16 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="follower"></div>
 
-<!-- NAV -->
 <nav>
   <div class="logo">SocialPulse</div>
-  <ul class="nav-links">
+  
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" id="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="blog.html" style="color: #00f5d4; font-weight: bold;">Blog</a></li>
     <li><a href="about.html" style="color: #00f5d4; font-weight: bold;">About Us</a></li>
@@ -968,7 +1026,6 @@
   <button class="nav-cta">Get Free Audit</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-orb orb1"></div>
   <div class="hero-bg-orb orb2"></div>
@@ -977,7 +1034,7 @@
   <div class="hero-content">
     <div class="hero-badge">
       <div class="badge-dot"></div>
-      #1 Social Media Agency 2025
+      #1 Social Media Agency 2026
     </div>
     <h1>Grow Your Brand on <span class="grad-text">Social Media</span></h1>
     <p>We craft data-driven social media strategies that turn followers into loyal customers. From content creation to paid ads — we handle everything.</p>
@@ -1037,7 +1094,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
     <div class="marquee-item">Content Strategy <span>✦</span></div>
@@ -1059,7 +1115,6 @@
   </div>
 </div>
 
-<!-- SERVICES -->
 <section class="services reveal" id="services">
   <div class="services-header">
     <div>
@@ -1108,7 +1163,6 @@
   </div>
 </section>
 
-<!-- PLATFORMS -->
 <section class="platforms reveal" id="platforms">
   <div class="section-label">Platforms</div>
   <div class="section-title">We Dominate Every<br>Major Platform</div>
@@ -1166,11 +1220,9 @@
   </div>
 </section>
 
-<!-- METRICS -->
 <section class="metrics reveal">
   <div class="metrics-inner">
     <div class="metric-item">
-      <!-- Added data-target attributes for JavaScript to count up dynamically -->
       <div class="metric-val" data-target="500">0</div>
       <div class="metric-label">Brands Served</div>
     </div>
@@ -1189,7 +1241,6 @@
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="process reveal" id="process">
   <div style="text-align:center; margin-bottom: 0;">
     <div class="section-label">How It Works</div>
@@ -1219,7 +1270,6 @@
   </div>
 </section>
 
-<!-- TOOLS -->
 <section class="tools reveal">
   <div class="section-label">Our Stack</div>
   <div class="section-title">Industry-Leading<br>Tools We Use</div>
@@ -1235,7 +1285,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing reveal" id="pricing">
   <div style="text-align:center;">
     <div class="section-label">Pricing</div>
@@ -1291,7 +1340,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials reveal">
   <div class="section-label">Testimonials</div>
   <div class="section-title">Brands That Trust Us</div>
@@ -1323,7 +1371,6 @@
   </div>
 </section>
 
-<!-- FAQ (With Accordion structure) -->
 <section class="faq reveal" id="faq">
   <div class="section-label">FAQ</div>
   <div class="section-title">Frequently Asked<br>Questions</div>
@@ -1355,7 +1402,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section reveal">
   <div class="cta-box">
     <div class="section-label" style="margin-bottom:20px;">Ready to Grow?</div>
@@ -1368,7 +1414,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1406,7 +1451,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 SocialPulse. All rights reserved.</div>
+    <div class="footer-copy">© 2026 SocialPulse. All rights reserved.</div>
     <div class="social-links">
       <a href="#" class="social-link">📘</a>
       <a href="#" class="social-link">📸</a>
@@ -1418,6 +1463,24 @@
 </footer>
 
 <script>
+  // Mobile Hamburger Menu Toggle Functionality
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const navItems = document.querySelectorAll('.nav-links a');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Mobile par kisi link pe click ho toh menu khud hi close ho jaye
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
   // Custom Cursor
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('follower');
@@ -1454,25 +1517,23 @@
 
   reveals.forEach(el => observer.observe(el));
 
-  // --- NEW: ADVANCED LIVE COUNTER ANIMATION ---
+  // Live Counter Animation
   function animateCounters() {
     const metricVals = document.querySelectorAll('.metric-val');
     
     metricVals.forEach(el => {
       const target = parseInt(el.getAttribute('data-target'));
-      const duration = 1500; // Animation total time 1.5 seconds
+      const duration = 1500;
       const stepTime = Math.max(Math.floor(duration / target), 15);
       let current = 0;
       
-      // Sufix handles settings like + or $
       let suffix = "+";
-      if(target === 98) suffix = "%"; // Retention rate %
+      if(target === 98) suffix = "%";
       
       let prefix = "";
-      if(target === 50) prefix = "$"; // Budget $M+
+      if(target === 50) prefix = "$";
 
       const timer = setInterval(() => {
-        // Increment smoothly
         if(target > 100) {
           current += Math.ceil(target / 30);
         } else {
@@ -1494,24 +1555,22 @@
     const metricsObs = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) { 
         animateCounters(); 
-        metricsObs.disconnect(); // Ek hi dafa run hoga jab screen pe aaye
+        metricsObs.disconnect();
       }
     }, { threshold: 0.3 });
     metricsObs.observe(metricsSection);
   }
 
-  // --- NEW: SMOOTH FAQ ACCORDION TOGGLE ---
+  // FAQ Accordion Toggle
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-q');
     question.addEventListener('click', () => {
-      // Baqi saare open items ko pehle close karne ke liye:
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
         }
       });
-      // Is current wale item ko open/close toggle karein
       item.classList.toggle('active');
     });
   });
