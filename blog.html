@@ -96,15 +96,16 @@
       font-weight: 300;
     }
 
-    /* PERFECT 3-COLUMN GRID LAYOUT */
+    /* FULL LENGTH DETAILED GRID LAYOUT */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto 100px;
       padding: 0 20px;
       width: 100%;
+      align-items: start;
     }
 
     .blog-card {
@@ -120,7 +121,7 @@
 
     .blog-img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       background: var(--surface2);
       display: flex;
       align-items: center;
@@ -130,10 +131,9 @@
     }
 
     .blog-content {
-      padding: 25px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
     }
 
     .blog-meta {
@@ -147,28 +147,48 @@
 
     .blog-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 15px;
+      line-height: 1.3;
+      margin-bottom: 20px;
       color: var(--text);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 10px;
     }
 
-    .blog-desc {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+    /* DETAILED TEXT STYLING */
+    .blog-detail {
+      color: #d1cfe2;
+      font-size: 0.98rem;
+      line-height: 1.7;
       text-align: left;
     }
 
-    .blog-desc p {
-      margin-bottom: 12px;
+    .blog-detail p {
+      margin-bottom: 16px;
     }
 
-    /* RESPONSIVE DESIGN FOR LAPTOPS, TABLETS & PHONES */
-    @media screen and (max-width: 1024px) {
+    .blog-detail h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin: 20px 0 10px 0;
+      font-weight: 600;
+    }
+
+    .blog-detail ul {
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    .blog-detail ul li {
+      margin-bottom: 8px;
+      color: #c4c2d6;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media screen and (max-width: 1100px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .blog-header h1 { font-size: 2.8rem; }
     }
 
     @media screen and (max-width: 768px) {
@@ -210,41 +230,70 @@
 <!-- BLOG GRID -->
 <div class="blog-grid">
   
-  <!-- Post 1: Laptop Specs -->
+  <!-- Post 1: Laptop Specs (FULL DETAIL) -->
   <div class="blog-card">
     <div class="blog-img">💻</div>
     <div class="blog-content">
       <div class="blog-meta">Hardware & Gaming</div>
       <h3 class="blog-title">Best High-Performance Laptop Specifications for Gaming & Multitasking</h3>
-      <div class="blog-desc">
-        <p>Agar aap heavy multitasking, programming, aur high-end gaming ya Minecraft jaise open-world games khelna chahte hain, toh aap ke laptop ki specifications ka behtar hona zaroori hai. Is kaam ke liye Lenovo ThinkPad aur HP ZBook jaise robust laptops behtareen performance dete hain.</p>
-        <p>Aap ke system mein kam az kam 16GB RAM aur aik powerful dedicated GPU hona chahiye jo gaming ke dauran lag free experience faraham kare. Saath hi heavy processing ke waqt cooling system ka acha hona zaroori hai taake laptop over-heat na ho aur performance musalsal behtar miley.</p>
+      <div class="blog-detail">
+        <p>Agar aap heavy programming, high-end coding, aur saath hi Minecraft aur open-world racing games jaisey heavy titles ka shouk rakhte hain, toh aap ke computer hardware ka extreme level par hona zaroori hai. Boht se aam laptops heavy load par crash ya lag karne lagte hain.</p>
+        
+        <h4>Recommended Professional Series:</h4>
+        <p>Is mushkil ka behtareen hal workstation-class laptops hain jaisey ke <strong>HP ZBook</strong> aur <strong>Lenovo ThinkPad</strong> professional series. Yeh laptops lambay samay tak heavy load aur multitasking ko bina kisi pareshani ke handle karne ke liye design kiye gaye hain.</p>
+        
+        <h4>Key Specifications Needed:</h4>
+        <ul>
+          <li><strong>RAM:</strong> Kam az kam 16GB DDR4/DDR5 RAM hona lazmi hai taake multitasking smoothly ho sake.</li>
+          <li><strong>GPU (Graphics Card):</strong> Dedicated graphics card jaisey NVIDIA ka high-performance GPU zaroori hai jo frames ko lag free rakhay.</li>
+          <li><strong>Cooling System:</strong> Laptops mein sab se bada masla heating ka hota hai. Minecraft jaisey open-world games khelte waqt hardware par boht load parta hai, is liye dual-fan cooling system aur behtar thermal pasting zaroori hai taake system heat up na ho.</li>
+        </ul>
+        <p>In hardware specs ka sahi combination aap ke laptop ki life ko barhata hai aur programming ke sath sath gaming ka aik perfect aur smooth experience faraham karta hai.</p>
       </div>
     </div>
   </div>
 
-  <!-- Post 2: Social Orbit Media -->
+  <!-- Post 2: Social Orbit Media (FULL DETAIL) -->
   <div class="blog-card">
     <div class="blog-img">🌐</div>
     <div class="blog-content">
       <div class="blog-meta">Brand Launch</div>
       <h3 class="blog-title">Building an Online Presence: The Journey of Social Orbit Media</h3>
-      <div class="blog-desc">
-        <p>Aj ke daur mein kisi bhi naye startup ya business ke liye ek mazboot online presence banana sab se ahem qadam hota hai. Isi maqsad ke liye hum ne Social Orbit Media ka aaghaz kiya hai jo local brands ko digital space mein grow karne mein madad deta hai.</p>
-        <p>Hum ne is project ke liye ek naya modern portal tayyar kiya hai jise GitHub Pages aur Blogger ke zariye live kiya gaya hai. Is website aur blog ka asal maqsad digital marketing ki behtareen techniques, social media strategy, aur SEO optimization ke bare mein logon ko guide karna hai taake local businesses online kamyab ho sakein.</p>
+      <div class="blog-detail">
+        <p>Aj ke advance digital daur mein kisi bhi business ya startup ki kamyabi ka daromadar us ki online branding aur digital identity par hota hai. Agar aap ka business internet par mojud nahi hai, toh aap apne 90% potential customers ko pehle hi kho chuke hain.</p>
+        
+        <h4>The Vision Behind Social Orbit Media:</h4>
+        <p>Isi barhay gap ko khatam karne ke liye hum ne <strong>Social Orbit Media</strong> ka aaghaz kiya hai. Yeh sirf aik digital agency nahi hai balki local brands aur startups ko zero se hero banane ka aik mukammal platform hai.</p>
+        
+        <h4>Our Core Digital Services:</h4>
+        <ul>
+          <li><strong>Web Development:</strong> Modern, fast aur super-responsive websites design karna jo GitHub Pages par behtareen speed ke sath chalti hain.</li>
+          <li><strong>Content Strategy:</strong> Blogger aur doosray mediums ke zariye informative content aur blog posts banana jo audience ko attract karein.</li>
+          <li><strong>SEO & Indexing:</strong> Google Search Console par website ko verify karwana aur sitemaps submit karna taake website Google ke pehle page par search karne se top par aaye.</li>
+        </ul>
+        <p>Hum local businesses ko aik aisi identity dena chahte hain ke un ki marketing automatically grow kare aur un ka message sahi customers tak sahi waqt par pohanch sake.</p>
       </div>
     </div>
   </div>
 
-  <!-- Post 3: Lahore Business -->
+  <!-- Post 3: Lahore Business (FULL DETAIL) -->
   <div class="blog-card">
     <div class="blog-img">🚀</div>
     <div class="blog-content">
       <div class="blog-meta">Digital Marketing</div>
       <h3 class="blog-title">3 Secret Strategies to Scale Local Businesses in Lahore Using Digital Marketing</h3>
-      <div class="blog-desc">
-        <p>Lahore ka business market bohat tezi se digitalize ho raha hai. Gulberg, Johar Town aur DHA jaise ilaqon mein chalne wale businesses ab targeted Facebook aur Instagram ads ki madad se kam budget mein sahi audience tak pohanch rahe hain.</p>
-        <p>Apne business ko scale karne ke liye high-hook short form videos (Reels aur TikTok) ka istemal karein jo pehle 3 seconds mein user ko rok lein. Saath hi apne brand ko Google Maps par optimize karein taake jab bhi koi local customer aap ki service search kare, toh aap ka business sab se upar nazar aaye.</p>
+      <div class="blog-detail">
+        <p>Lahore ki commercial markets jaisey Gulberg, Liberty, Johar Town, aur DHA ab sirf physical shop-keeping tak mehdood nahi rahin. Yahan ka har local business ab tezi se digitalize ho raha hai aur targeted marketing ka istemal kar raha hai.</p>
+        
+        <h4>1. Hyper-Local Target Ads:</h4>
+        <p>Poore shehar par fazool budget zaya karne ke bajaye, Facebook aur Instagram par local area-wise targeting karein. Agar aap ki outlet Gulberg mein hai, toh sirf 5 se 10 kilometers ke radius mein rehne wale logon ko apna ad dikhayein taake har click conversion mein badal sakay.</p>
+        
+        <h4>2. High-Hook Short Form Videos:</h4>
+        <p>Aj kal log lambay aur boring ads nahi dekhte. TikTok, Reels aur YouTube Shorts par pehle 3 seconds mein aik zabardast 'Hook' lagayein jo user ko scroll karne se rok ley. Apni product ke fawaid ko short videos mein dekhayein.</p>
+        
+        <h4>3. Local SEO & Google Maps:</h4>
+        <p>Jab bhi koi Lahori internet par aap ki service dhoonde, aap ka brand top par hona chahiye. Google My Business par apni location register karein, daily updates post karein aur purane clients se maximum positive reviews lein.</p>
+        <p>In teeno strategies ko aapas mein mila kar apply karne se aap ke local brand ki sales boht hi kam waqt mein double ho sakti hain.</p>
       </div>
     </div>
   </div>
