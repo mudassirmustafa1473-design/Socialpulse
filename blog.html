@@ -97,13 +97,16 @@
     }
 
     /* BLOG GRID */
+   /* Is CSS ko apni blog.html mein .blog-grid ki jagah replace karein */
     .blog-grid {
       max-width: 1200px;
       margin: 0 auto 100px;
       padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 30px !important;
+      width: 100%;
+    }
     }
 
     .blog-card {
