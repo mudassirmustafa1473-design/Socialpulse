@@ -923,7 +923,7 @@
     /* ========================================================
        MOBILE RESPONSIVE & FIXED HAMBURGER STYLES
        ======================================================== */
-    @media screen and (max-width: 992px) {
+   @media screen and (max-width: 992px) {
       section { padding: 60px 20px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .platforms-grid { grid-template-columns: repeat(3, 1fr); }
@@ -948,9 +948,20 @@
       body { cursor: default; }
       .cursor, .cursor-follower { display: none !important; }
       
-      /* Explicitly rendering hamburger visible on mobile */
+      /* Navbar spacing fixed for mobile layout */
+      nav { 
+        padding: 15px 24px !important; 
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+
+      /* Hamburger icon position adjustment */
       .hamburger { 
         display: flex !important; 
+        margin-left: auto !important;
+        padding: 5px !important;
+        z-index: 110;
       }
 
       /* Slide-out Mobile Menu */
@@ -981,24 +992,17 @@
         font-size: 1.2rem;
       }
 
-      nav { padding: 15px 20px; }
       .nav-cta { display: none; }
-
       .hero h1 { font-size: 2.8rem; }
       .hero-buttons { width: 100%; flex-direction: column; gap: 12px; }
       .btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 14px 24px; }
       .hero-stats { gap: 20px; flex-wrap: wrap; }
       .stat-item { flex: 1 1 40%; }
-
       .services-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 40px; }
-      .services-grid, .pricing-grid, .testi-grid, .faq-grid, .tools-grid, .metrics-inner {
-        grid-template-columns: 1fr;
-      }
-      
+      .services-grid, .pricing-grid, .testi-grid, .faq-grid, .tools-grid, .metrics-inner { grid-template-columns: 1fr; }
       .platforms-grid { grid-template-columns: repeat(2, 1fr); }
       .process-steps { grid-template-columns: 1fr; gap: 40px; }
       .process-steps::before { display: none; }
-      
       .price-card.featured { transform: none; }
       .footer-top { grid-template-columns: 1fr; gap: 30px; }
       .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
