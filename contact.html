@@ -267,13 +267,12 @@
 
   <!-- RIGHT SIDE: ACTIVE FORM -->
   <div class="contact-form-box">
-    <!-- Web3Forms directly handle karega submission -->
     <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
       
-      <!-- Aap ki personal access key -->
+      <!-- AAP KI NAYI EXACT ACCESS KEY -->
       <input type="hidden" name="access_key" value="cc835fb1-90d9-4647-b6c2-6d01783125da">
       <input type="hidden" name="subject" value="New Lead from SocialOrbit Website">
-      <input type="checkbox" name="botcheck" id="" style="display: none;">
+      <input type="checkbox" name="botcheck" style="display: none;">
 
       <div class="form-group">
         <label for="name">Your Name</label>
@@ -309,34 +308,37 @@
     });
   }
 
-  // Live Form Submission Handler without reload
+  // Super Clean Live Submission without space issues
   const form = document.getElementById('contact-form');
   const result = document.getElementById('form-result');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const formData = new FormData(form);
     result.innerHTML = "Sending...";
     result.style.color = "#8a87a0";
 
+    const json = JSON.stringify(Object.fromEntries(new FormData(form)));
+
     fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
     })
     .then(async (response) => {
-        let json = await response.json();
+        let res = await response.json();
         if (response.status == 200) {
-            result.innerHTML = "Message Sent Successfully! Check your email.";
+            result.innerHTML = "Message Sent Successfully!";
             result.style.color = "#4bb543";
             form.reset();
         } else {
-            console.log(response);
-            result.innerHTML = json.message;
+            result.innerHTML = res.message;
             result.style.color = "#ff3333";
         }
     })
     .catch(error => {
-        console.log(error);
         result.innerHTML = "Something went wrong!";
         result.style.color = "#ff3333";
     });
