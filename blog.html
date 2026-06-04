@@ -96,15 +96,15 @@
       font-weight: 300;
     }
 
-    /* BLOG GRID - DESKTOP FIXED */
+    /* MUKAMMAL FIXED BLOG GRID FOR DESKTOP */
     .blog-grid {
-      max-width: 1200px;
-      margin: 0 auto 100px;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      width: 100%;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important; /* 3 Khulay Columns */
+      gap: 40px !important; /* Spacing barha di taake daba hua na lage */
+      max-width: 1300px !important;
+      margin: 0 auto 100px !important;
+      padding: 0 40px !important;
+      width: 100% !important;
     }
 
     .blog-card {
@@ -115,18 +115,19 @@
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 100% !important; /* Card full size le ga */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .blog-card:hover {
       transform: translateY(-5px);
       border-color: rgba(255, 60, 172, 0.3);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
     .blog-img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       background: var(--surface2);
       display: flex;
       align-items: center;
@@ -136,7 +137,7 @@
     }
 
     .blog-content {
-      padding: 30px;
+      padding: 35px !important; /* Text area ko khula kia */
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -148,46 +149,27 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .blog-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem !important; /* Text size thora barha aur behtar kia */
       font-weight: 700;
       line-height: 1.4;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
       color: var(--text);
     }
 
     .blog-desc {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      flex-grow: 1;
+      font-size: 1rem !important;
+      line-height: 1.7 !important; /* Lines ke darmiyan space barha di */
     }
 
-    .read-more {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: gap 0.3s;
-    }
-
-    .blog-card:hover .read-more {
-      gap: 12px;
-      color: var(--accent1);
-    }
-
-    /* MOBILE & TABLET RESPONSIVE */
-    @media screen and (max-width: 992px) {
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .blog-header h1 { font-size: 2.8rem; }
+    /* RESPONSIVE FOR SMALLER SCREENS */
+    @media screen and (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
     }
 
     @media screen and (max-width: 768px) {
@@ -200,7 +182,7 @@
         transition: right 0.4s ease; z-index: 105;
       }
       .nav-links.active { right: 0; }
-      .blog-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr !important; padding: 0 20px !important; }
     }
   </style>
 </head>
@@ -236,7 +218,6 @@
       <div class="blog-meta">Hardware & Gaming</div>
       <h3 class="blog-title">Best High-Performance Laptop Specifications for Gaming & Multitasking</h3>
       <p class="blog-desc">HP ZBook aur Lenovo ThinkPad jaise top-tier laptops ki specs, GPUs aur RAM requirements ka mukammal jaiza.</p>
-      <a href="#" class="read-more">Read Article →</a>
     </div>
   </div>
 
@@ -247,7 +228,6 @@
       <div class="blog-meta">Brand Launch</div>
       <h3 class="blog-title">Building an Online Presence: The Journey of Social Orbit Media</h3>
       <p class="blog-desc">Hum kis tarah Social Orbit Media ko digital marketing ki duniya mein ek naya aur behtar brand bana rahe hain.</p>
-      <a href="#" class="read-more">Read Article →</a>
     </div>
   </div>
 
@@ -257,8 +237,7 @@
     <div class="blog-content">
       <div class="blog-meta">Digital Marketing</div>
       <h3 class="blog-title">3 Secret Strategies to Scale Local Businesses in Lahore Using Digital Marketing</h3>
-      <p class="blog-desc">Lahore ke local businesses ke liye social media aur targeted ads kaise game-changer sabit ho sakte hain?</p>
-      <a href="lahore-business-growth.html" class="read-more">Read Article →</a>
+      <p class="blog-desc">Lahore ke local businesses ke liye social media aur targeted ads kaise game-changer sabit ho sakte hain? Janiye 2026 ke top trends.</p>
     </div>
   </div>
 
